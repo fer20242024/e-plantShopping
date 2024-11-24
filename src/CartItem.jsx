@@ -11,8 +11,12 @@ const CartItem = ({ onContinueShopping }) => {
   const dispatch = useDispatch();
 
   // Calculate total amount for all products in the cart
-  const calculateTotalAmount = (ProductList) => {
-    //totalCost += item.cost * item.quantity;
+  const calculateTotalAmount = (items) => {
+    let totalCost = 0;
+    items.forEach((item) => {
+      totalCost += item.cost * item.quantity;
+    });
+    return totalCost;
   };
 
   const handleContinueShopping = (e) => {};
@@ -29,11 +33,6 @@ const CartItem = ({ onContinueShopping }) => {
   const handleRemove = (item) => {};
 
   // Calculate total cost based on quantity for an item
-  const calculateTotalCost = (item) => {
-    let totalCost = 0;
-    totalCost += item.cost * item.quantity;
-    return totalCost;
-  };
 
   return (
     <div className="cart-container">
@@ -41,28 +40,26 @@ const CartItem = ({ onContinueShopping }) => {
         Total Cart Amount: ${calculateTotalAmount()}
       </h2>
       <div>
-        {cart.map((item) => (
-          <div className="cart-item" key={item.name}>
-            <img className="cart-item-image" src={item.image} alt={item.name} />
-            <div className="cart-item-details">
-              <div className="cart-item-name">{item.name}</div>
-              <div className="cart-item-cost">{item.cost}</div>
-              <div className="cart-item-quantity">
+        cartItem.map((item) => (
+          <div key={item.id}>
+            <img src={item.image} alt={item.name} />
+            <p>{item.name}</p>
+            <p>Cost: {item.cost}</p>
+            <p>Quantity: {item.quantity}</p>
+            </div>));
+
+            
                 <button
                   className="cart-item-button cart-item-button-dec"
                   onClick={() => handleDecrement(item)}
-                >
-                  -
-                </button>
+                ></button>
                 <span className="cart-item-quantity-value">
                   {item.quantity}
                 </span>
                 <button
                   className="cart-item-button cart-item-button-inc"
                   onClick={() => handleIncrement(item)}
-                >
-                  +
-                </button>
+                ></button>
               </div>
               <div className="cart-item-total">
                 Total: ${calculateTotalCost(item)}
