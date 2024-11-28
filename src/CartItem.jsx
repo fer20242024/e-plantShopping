@@ -11,85 +11,86 @@ const CartItem = ({ onContinueShopping }) => {
   const dispatch = useDispatch();
 
   // Calculate total amount for all products in the cart
-  const calculateTotalAmount = (items) => {
-    let totalCost = 0;
-    items.forEach((item) => {
-      totalCost += item.cost * item.quantity;
+  const calculateTotalAmount = () => {
+    let total = 0;
+    cart.forEach((item) => {
+      total += item.quantity * parseFloat(item.cost.substring(1));
     });
-    return totalCost;
+    return total;
   };
+  return totalCost;
+};
 
-  const handleContinueShopping = (e) => {};
+const handleContinueShopping = (e) => {};
 
-  const handleIncrement = (item) => {
-    dispatch(incrementQuantity(item));
-  };
+const handleIncrement = (item) => {
+  dispatch(incrementQuantity(item));
+};
 
-  const handleDecrement = (item) => {
-    dispatch(decrementQuantity(item));
-    removeItem();
-  };
+const handleDecrement = (item) => {
+  dispatch(decrementQuantity(item));
+  removeItem();
+};
 
-  const handleRemove = (item) => {};
+const handleRemove = (item) => {};
 
-  // Calculate total cost based on quantity for an item
+// Calculate total cost based on quantity for an item
 
-  return (
-    <div className="cart-container">
-      <h2 style={{ color: "black" }}>
-        Total Cart Amount: ${calculateTotalAmount()}
-      </h2>
-      <div>
-        cartItem.map((item) => (
-          <div key={item.id}>
-            <img src={item.image} alt={item.name} />
-            <p>{item.name}</p>
-            <p>Cost: {item.cost}</p>
-            <p>Quantity: {item.quantity}</p>
-            </div>));
-
-            
-                <button
-                  className="cart-item-button cart-item-button-dec"
-                  onClick={() => handleDecrement(item)}
-                ></button>
-                <span className="cart-item-quantity-value">
-                  {item.quantity}
-                </span>
-                <button
-                  className="cart-item-button cart-item-button-inc"
-                  onClick={() => handleIncrement(item)}
-                ></button>
-              </div>
-              <div className="cart-item-total">
-                Total: ${calculateTotalCost(item)}
-              </div>
+return (
+  <div className="cart-container">
+    <h2 style={{ color: "black" }}>
+      Total Cart Amount: ${calculateTotalAmount()}
+    </h2>
+    <div>
+      {cart.map((item) => (
+        <div className="cart-item" key={item.name}>
+          <img className="cart-item-image" src={item.image} alt={item.name} />
+          <div className="cart-item-details">
+            <div className="cart-item-name">{item.name}</div>
+            <div className="cart-item-cost">{item.cost}</div>
+            <div className="cart-item-quantity">
               <button
-                className="cart-item-delete"
-                onClick={() => handleRemove(item)}
+                className="cart-item-button cart-item-button-dec"
+                onClick={() => handleDecrement(item)}
               >
-                Delete
+                -
+              </button>
+              <span className="cart-item-quantity-value">{item.quantity}</span>
+              <button
+                className="cart-item-button cart-item-button-inc"
+                onClick={() => handleIncrement(item)}
+              >
+                +
               </button>
             </div>
+            <div className="cart-item-total">
+              Total: ${calculateTotalCost(item)}
+            </div>
+            <button
+              className="cart-item-delete"
+              onClick={() => handleRemove(item)}
+            >
+              Delete
+            </button>
           </div>
-        ))}
-      </div>
-      <div
-        style={{ marginTop: "20px", color: "black" }}
-        className="total_cart_amount"
-      ></div>
-      <div className="continue_shopping_btn">
-        <button
-          className="get-started-button"
-          onClick={(e) => handleContinueShopping(e)}
-        >
-          Continue Shopping
-        </button>
-        <br />
-        <button className="get-started-button1">Checkout</button>
-      </div>
+        </div>
+      ))}
     </div>
-  );
-};
+    <div
+      style={{ marginTop: "20px", color: "black" }}
+      className="total_cart_amount"
+    ></div>
+    <div className="continue_shopping_btn">
+      <button
+        className="get-started-button"
+        onClick={(e) => handleContinueShopping(e)}
+      >
+        Continue Shopping
+      </button>
+      <br />
+      <button className="get-started-button1">Checkout</button>
+    </div>
+  </div>
+);
 
 export default CartItem;
