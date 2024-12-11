@@ -52,10 +52,8 @@ return (
               <button
                 className="cart-item-button cart-item-button-dec"
                 onClick={() => handleDecrement(item)}
-              >
-                -
-              </button>
-              <span className="cart-item-quantity-value">{item.quantity}</span>
+              ></button>
+              <span className="cart-item-quantity-value">{item.quantity}</span>.
               <button
                 className="cart-item-button cart-item-button-inc"
                 onClick={() => handleIncrement(item)}
