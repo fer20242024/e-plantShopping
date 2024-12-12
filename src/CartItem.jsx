@@ -3,23 +3,23 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeItem, updateQuantity } from "./CartSlice";
 import "./CartItem.css";
 
-const handleCheckoutShopping = (e) => {
-  alert("Functionality to be added for future reference");
-};
+
 const CartItem = ({ onContinueShopping }) => {
-  const cart = useSelector((state) => state.cart.items);
-  const dispatch = useDispatch();
+const cart = useSelector((state) => state.cart.items);
+const dispatch = useDispatch();
+const handleCheckoutShopping = (e) => {
+    alert("Functionality to be added for future reference");
+  };
 
   // Calculate total amount for all products in the cart
-  const calculateTotalAmount = () => {
-    let total = 0;
-    cart.forEach((item) => {
-      total += item.quantity * parseFloat(item.cost.substring(1));
-    });
-    return total;
+  const calculateTotalAmount = () => {        
+    let total = 0;        
+    cart.forEach(item => {          
+      total += item.quantity * parseFloat(item.cost.substring(1));        
+    });        
+    return total;      
   };
-  return totalCost;
-};
+  
 
 const handleContinueShopping = (e) => {};
 
@@ -49,17 +49,14 @@ return (
             <div className="cart-item-name">{item.name}</div>
             <div className="cart-item-cost">{item.cost}</div>
             <div className="cart-item-quantity">
-              <button
-                className="cart-item-button cart-item-button-dec"
+              <button className="cart-item-button cart-item-button-dec"
                 onClick={() => handleDecrement(item)}
-              ></button>
+              >-</button>
               <span className="cart-item-quantity-value">{item.quantity}</span>.
               <button
                 className="cart-item-button cart-item-button-inc"
                 onClick={() => handleIncrement(item)}
-              >
-                +
-              </button>
+              >+</button>
             </div>
             <div className="cart-item-total">
               Total: ${calculateTotalCost(item)}
