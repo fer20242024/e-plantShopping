@@ -3,23 +3,23 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeItem, updateQuantity } from "./CartSlice";
 import "./CartItem.css";
 
-
 const CartItem = ({ onContinueShopping }) => {
-const cart = useSelector((state) => state.cart.items);
-const dispatch = useDispatch();
-const handleCheckoutShopping = (e) => {
+  const cart = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
+  const handleCheckoutShopping = (e) => {
     alert("Functionality to be added for future reference");
   };
 
   // Calculate total amount for all products in the cart
-  const calculateTotalAmount = () => {        
-    let total = 0;        
-    cart.forEach(item => {          
-      total += item.quantity * parseFloat(item.cost.substring(1));        
-    });        
-    return total;      
+  const calculateTotalAmount = () => {
+    let total = 0;
+    cart.forEach((item) => {
+      total += item.quantity * parseFloat(item.cost.substring(1));
+    });
+    
+    return total;
   };
-  
+};
 
 const handleContinueShopping = (e) => {};
 
@@ -87,5 +87,5 @@ return (
     </div>
   </div>
 );
-
+}
 export default CartItem;
