@@ -33,10 +33,19 @@ const CartItem = ({ onContinueShopping }) => {
     removeItem();
   };
 
-  const handleRemove = (item) => {};
+  const handleRemove = (item) => {
+    removeItem();
+  };
 
   // Calculate total cost based on quantity for an item
+  const calculateTotalCost = (cart) => {
+    let TotalCost = 0;
+    cart.map((item) => {
+      TotalCost += item.quantity * parseFloat(item.cost.substring(1));
+    });
 
+    return TotalCost;
+  };
   return (
     <div className="cart-container">
       <h2 style={{ color: "black" }}>
@@ -68,7 +77,7 @@ const CartItem = ({ onContinueShopping }) => {
                 </button>
               </div>
               <div className="cart-item-total">
-                Total: ${calculateTotalCost(item)}
+                Total: ${calculateTotalAmount(item)}
               </div>
               <button
                 className="cart-item-delete"
