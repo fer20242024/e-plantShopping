@@ -13,6 +13,7 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   // Calculate total amount for all products in the cart
+  //?
   const calculateTotalAmount = () => {
     let total = 0;
     cart.forEach((item) => {
@@ -22,7 +23,12 @@ const CartItem = ({ onContinueShopping }) => {
     return total;
   };
 
-  const handleContinueShopping = (e) => {};
+  const handleContinueShopping = (e) => {
+    //introduje este algoritmo:
+    e.preventDefault();
+    setShowPlants(true);
+    setShowCart(false);
+  };
 
   const handleIncrement = (item) => {
     dispatch(incrementQuantity(item));
@@ -34,10 +40,14 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleRemove = (item) => {
+    //funcion que permite eliminar por completo una planta y es llamada desde abajo
     removeItem();
+    //removeItem() q es un reducor llama a CartSlice.jsx para que ejecute
+    // la eliminacion y le devuelva su valor
   };
 
-  // Calculate total cost based on quantity for an item
+  // Calculate total cost based on quantity for an item//Calcula el costoTotal(Total Cart Amount: ${calculateTotalAmount())
+  // de todas las plantas elegidas
   const calculateTotalCost = (cart) => {
     let TotalCost = 0;
     cart.map((item) => {
@@ -101,7 +111,12 @@ const CartItem = ({ onContinueShopping }) => {
           Continue Shopping
         </button>
         <br />
-        <button className="get-started-button1">Checkout</button>
+        <button
+          className="get-started-button1"
+          onClick={(e) => handleCheckoutShopping(e)}
+        >
+          Checkout
+        </button>
       </div>
     </div>
   );

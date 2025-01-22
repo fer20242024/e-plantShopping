@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./ProductList.css";
 import CartItem from "./CartItem";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, removeItem } from "./CartSlice";
+import { addItem } from "./CartSlice"; //se cambio la ultima linea borrada por esta
+//import { addItem, removeItem } from "./CartSlice";
 
 function ProductList() {
   const dispatch = useDispatch();
@@ -264,14 +265,14 @@ function ProductList() {
     padding: "15px",
     display: "flex",
     justifyContent: "space-between",
-    alignIems: "center",
+    alignItems: "center",
     fontSize: "20px",
   };
   const styleObjUl = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "1100px",
+    width: "700px",
   };
   const styleA = {
     color: "white",
@@ -290,6 +291,7 @@ function ProductList() {
 
   const handleContinueShopping = (e) => {
     e.preventDefault();
+    //setShowPlants(true); //modificado: introduje toda la sentencia
     setShowCart(false);
   };
   return (
