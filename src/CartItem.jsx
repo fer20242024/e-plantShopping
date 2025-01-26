@@ -25,6 +25,7 @@ const CartItem = ({ onContinueShopping }) => {
 
   const handleContinueShopping = (e) => {
     //introduje este algoritmo:
+    onContinueShopping(e); //Call the parent function
     e.preventDefault();
     setShowPlants(true);
     setShowCart(false);
@@ -36,7 +37,8 @@ const CartItem = ({ onContinueShopping }) => {
 
   const handleDecrement = (item) => {
     dispatch(decrementQuantity(item));
-    removeItem();
+    if (item.quantity === 0)//renglon añadido 25/01
+    {removeItem();}
   };
 
   const handleRemove = (item) => {
@@ -80,6 +82,7 @@ const CartItem = ({ onContinueShopping }) => {
                 </span>
                 .
                 <button
+                
                   className="cart-item-button cart-item-button-inc"
                   onClick={() => handleIncrement(item)}
                 >
