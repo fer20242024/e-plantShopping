@@ -31,6 +31,13 @@ export const CartSlice = createSlice({
             item.quantity--;
         }
         }
+    incrementQuantity: (state,action) => {//funcion añadida el 28/01
+            const item= state(action.payload)
+            //if (item && item.quantity > 0){
+                item.quantity--;
+            //}
+            }    
+
     },
   },
 });

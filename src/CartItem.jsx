@@ -33,19 +33,21 @@ const CartItem = ({ onContinueShopping }) => {
 
   const handleIncrement = (item) => {
     dispatch(incrementQuantity(item));
+    updateQuantity()
   };
 
   const handleDecrement = (item) => {
     dispatch(decrementQuantity(item));
-    if (item.quantity === 0)//renglon añadido 25/01
-    {removeItem();}
+    if (item.quantity === 0)//renglon añadido el 25/01
+    {removeItem();
+    updateQuantity()}
   };
 
   const handleRemove = (item) => {
     //funcion que permite eliminar por completo una planta y es llamada desde abajo
     removeItem();
     //removeItem() q es un reducor llama a CartSlice.jsx para que ejecute
-    // la eliminacion y le devuelva su valor
+    // la eliminacion y le devuelva su valor por intermedio de esta misma funcion
   };
 
   // Calculate total cost based on quantity for an item//Calcula el costoTotal(Total Cart Amount: ${calculateTotalAmount())
