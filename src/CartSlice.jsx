@@ -21,22 +21,23 @@ export const CartSlice = createSlice({
     },
     updateQuantity: (state, action) => {
       const { name, quantity } = action.payload;
-      const itemToUpdate = state.items.find((item) => item.name === name);
+      const itemToUpdate = state.items.find((item) => 
+      item.name === name);
       if (itemToUpdate) {
         itemToUpdate.quantity = quantity;
       }
-    decrementQuantity: (state,action) => {
-        const item= state(action.payload)
-        if (item && item.quantity > 0){
-            item.quantity--;
-        }
-        }
-    incrementQuantity: (state,action) => {//funcion añadida el 28/01
-            const item= state(action.payload)
-            //if (item && item.quantity > 0){
-                item.quantity--;
-            //}
-            }    
+    //decrementQuantity: (state,action) => {
+      //  const item= state(action.payload)
+        //if (item && item.quantity > 0){
+          //  item.quantity--;
+        //}
+        //}
+   // incrementQuantity: (state,action) => {//funcion añadida el 28/01
+   //         const item= state(action.payload)
+   //         //if (item && item.quantity > 0){
+   //             item.quantity--;
+   //}
+   //}    
 
     },
   },

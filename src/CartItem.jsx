@@ -32,33 +32,35 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleIncrement = (item) => {
-    dispatch(incrementQuantity(item));
-    updateQuantity()
+    dispatch(updateQuantity({ name: item.name,
+    quantity: item.quantity + 1 }));
   };
 
   const handleDecrement = (item) => {
-    dispatch(decrementQuantity(item));
-    if (item.quantity === 0)//renglon añadido el 25/01
-    {removeItem();
-    updateQuantity()}
+    if (item.quantity > 1) {
+      dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 }));
+    } else {
+      dispatch(removeItem(item.name));
+    }
   };
 
   const handleRemove = (item) => {
     //funcion que permite eliminar por completo una planta y es llamada desde abajo
-    removeItem();
+    dispatch(removeItem(item.name));
     //removeItem() q es un reducor llama a CartSlice.jsx para que ejecute
     // la eliminacion y le devuelva su valor por intermedio de esta misma funcion
   };
-
-  // Calculate total cost based on quantity for an item//Calcula el costoTotal(Total Cart Amount: ${calculateTotalAmount())
-  // de todas las plantas elegidas
+  /* Calculate total cost based on quantity for an item//Calcula el costoTotal(Total Cart Amount: ${calculateTotalAmount())
+   de todas las plantas elegidas
   const calculateTotalCost = (cart) => {
     let TotalCost = 0;
     cart.map((item) => {
       TotalCost += item.quantity * parseFloat(item.cost.substring(1));
     });
+    return TotalCost;};*/
 
-    return TotalCost;
+const calculateTotalCost = (item) => {
+    return item.quantity * parseFloat(item.cost.substring(1));
   };
   return (
     <div className="cart-container">
@@ -92,7 +94,7 @@ const CartItem = ({ onContinueShopping }) => {
                 </button>
               </div>
               <div className="cart-item-total">
-                Total: ${calculateTotalAmount(item)}
+                Total: ${calculateTotalCost(item)}
               </div>
               <button
                 className="cart-item-delete"
