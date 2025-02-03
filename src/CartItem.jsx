@@ -6,6 +6,7 @@ import "./CartItem.css";
 const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
+  const cartItemsCount = useSelector((state) => state.cart.totalCount);
   const handleCheckoutShopping = (e) => {
     alert(
       "Functionality to be added for future reference relationated with the pago"

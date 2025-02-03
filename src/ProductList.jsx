@@ -343,6 +343,7 @@ function ProductList() {
                     id="mainIconPathAttribute"
                   ></path>
                 </svg>
+                <span>({totalCount})</span>
               </h1>
             </a>
           </div>
