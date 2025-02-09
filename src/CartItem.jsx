@@ -32,8 +32,8 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleIncrement = (item) => {
-    dispatch(updateQuantity({ name: item.name,
-    quantity: item.quantity + 1 }));
+    dispatch(updateQuantity({ name: item.name, quantity: item.quantity + 1 }));
+    
   };
 
   const handleDecrement = (item) => {
@@ -92,10 +92,12 @@ const calculateTotalCost = (item) => {
                 >
                   +
                 </button>
+                
               </div>
               <div className="cart-item-total">
                 Total: ${calculateTotalCost(item)}
-              </div>
+                </div>
+
               <button
                 className="cart-item-delete"
                 onClick={() => handleRemove(item)}

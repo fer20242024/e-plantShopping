@@ -344,7 +344,7 @@ function ProductList() {
                   ></path>
                 </svg>
                 <span className="cart-item-quantity-value">
-                  {item.Q}
+                  
                 </span>
               </h1>
             </a>
