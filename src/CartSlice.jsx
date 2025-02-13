@@ -21,15 +21,13 @@ export const CartSlice = createSlice({
     removeItem: (state, action) => {
       const productName = action.payload; //anexo
       const existingItem = state.items.find(
-        //anex
-        (item) => item.name === productName //anex
-      );
+        (item) => item.name === productName
+      ); //anexo
       if (existingItem) {
         //anexo
         state.totalCount -= existingItem.quantity; // anexo:Restar la cantidad del producto que se está eliminando
         state.items = state.items.filter((item) => item.name !== productName); //anexo
       } //anexo
-      //state.items = state.items.filter((item) => item.name !== action.payload);//NOANEXE
     },
 
     /*updateQuantity: (state, action) => {
@@ -43,7 +41,8 @@ export const CartSlice = createSlice({
       const { name, quantity } = action.payload;
       const existingItem = state.items.find((item) => item.name === name);
       if (existingItem) {
-        state.totalCount += quantity - existingItem.quantity; // Actualizar la cantidad total de productos
+        state.totalCount += quantity;
+        //- existingItem.quantity; // Actualizar la cantidad total de productos
         existingItem.quantity = quantity;
       }
     },

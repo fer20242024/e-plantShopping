@@ -3,6 +3,7 @@ import "./ProductList.css";
 import CartItem from "./CartItem";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "./CartSlice"; //se cambio la ultima linea borrada por esta
+import { removeItem, updateQuantity } from "./CartSlice";
 //import { addItem, removeItem } from "./CartSlice";
 
 function ProductList() {
@@ -343,7 +344,6 @@ function ProductList() {
                     id="mainIconPathAttribute"
                   ></path>
                 </svg>
-                <span>({totalCount})</span>
               </h1>
             </a>
           </div>
