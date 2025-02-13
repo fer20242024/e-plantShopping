@@ -5,6 +5,7 @@ import "./CartItem.css";
 
 const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector((state) => state.cart.items);
+  const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0); //AÑADIDO
   const dispatch = useDispatch();
   const handleCheckoutShopping = (e) => {
     alert(
